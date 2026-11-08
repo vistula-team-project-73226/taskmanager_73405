@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172554">
+  <meta name="description" content="A clean, simple workspace for keeping track of your tasks.">
+  <title>Taskflow — Your task workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Taskflow home">
+        <span class="brand-mark" aria-hidden="true">t</span>
+        <span class="brand-name">taskflow</span>
+      </a>
+      <div class="topbar-right">
+        <span class="workspace-label">STUDENT WORKSPACE</span>
+        <div class="student-details">
+          <span class="student-pill">ID <strong id="student-id">73405</strong></span>
+          <span class="student-name">Adel Hussein</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">YOUR PERSONAL ORGANIZER</p>
+          <h1 id="page-title">Make room for <span>what matters.</span></h1>
+          <p class="hero-copy">One place for your to-dos, ideas, and little wins. Keep moving, one task at a time.</p>
+        </div>
+        <div class="hero-decoration" aria-hidden="true">
+          <span class="deco-circle circle-one"></span>
+          <span class="deco-circle circle-two"></span>
+          <span class="deco-spark">✳</span>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Task overview">
+        <article class="stat-card stat-total">
+          <div class="stat-topline"><span class="stat-label">ALL TASKS</span><span class="stat-icon">▤</span></div>
+          <p class="stat-number" id="total-count">—</p>
+          <p class="stat-caption">Everything on your list</p>
+        </article>
+        <article class="stat-card stat-active">
+          <div class="stat-topline"><span class="stat-label">IN PROGRESS</span><span class="stat-icon">◷</span></div>
+          <p class="stat-number" id="active-count">—</p>
+          <p class="stat-caption">Still waiting for you</p>
+        </article>
+        <article class="stat-card stat-complete">
+          <div class="stat-topline"><span class="stat-label">COMPLETED</span><span class="stat-icon">✓</span></div>
+          <p class="stat-number" id="completed-count">—</p>
+          <p class="stat-caption">A little progress adds up</p>
+        </article>
+      </section>
+
+      <section class="workspace-grid">
+        <aside class="composer panel" aria-labelledby="composer-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">GET IT OUT OF YOUR HEAD</p>
+              <h2 id="composer-title">Add a task</h2>
+            </div>
+            <span class="heading-icon" aria-hidden="true">＋</span>
+          </div>
+          <form id="task-form">
+            <label for="task-title">Task name</label>
+            <input type="text" id="task-title" name="title" placeholder="e.g. Prepare networking notes" maxlength="120" required>
+
+            <label for="task-description">A few details <span class="optional">OPTIONAL</span></label>
+            <textarea id="task-description" name="description" rows="4" maxlength="500" placeholder="Add a note or a little context..."></textarea>
+
+            <button type="submit" id="task-submit" class="primary-button">
+              <span class="button-plus" aria-hidden="true">＋</span>
+              <span>Add task</span>
+            </button>
+            <button type="button" id="cancel-edit" class="text-button" hidden>Cancel editing</button>
+          </form>
+          <p class="form-footnote"><span class="footnote-dot"></span> Small steps make big things happen.</p>
+        </aside>
+
+        <section class="tasks-panel panel" aria-labelledby="tasks-title">
+          <div class="tasks-heading">
+            <div>
+              <p class="eyebrow">YOUR CHECKLIST</p>
+              <h2 id="tasks-title">Tasks <span class="task-count" id="visible-count">0</span></h2>
+            </div>
+            <div class="filter-tabs" role="group" aria-label="Filter tasks">
+              <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All</button>
+              <button class="filter-button" type="button" data-filter="active" aria-pressed="false">Active</button>
+              <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">Done</button>
+            </div>
+          </div>
+
+          <div class="search-wrap">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="task-search" type="search" placeholder="Search your tasks..." aria-label="Search tasks">
+            <kbd>/</kbd>
+          </div>
+
+          <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+          <div id="task-list" class="task-list" aria-live="polite">
+            <div class="loading-state"><span class="spinner" aria-hidden="true"></span>Loading your tasks...</div>
+          </div>
+        </section>
+      </section>
+
+      <footer class="page-footer">
+        <span>Made for focus, built for progress.</span>
+        <a href="contribution.html">Team contribution <span aria-hidden="true">↗</span></a>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
