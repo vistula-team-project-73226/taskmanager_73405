@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Team Contribution</title>
+</head>
+<body>
+  <h1>Team Contribution</h1>
+  <button id="load-contributor">Show Contributor</button>
+  <p id="contributor-student-id"></p>
+  <p><a href="index.html">Back to Task Manager</a></p>
+
+  <script>
+    const output = document.getElementById('contributor-student-id');
+    document.getElementById('load-contributor').addEventListener('click', async () => {
+      try {
+        const res = await fetch('contribution.json');
+        if (!res.ok) throw new Error('Request failed (' + res.status + ')');
+        const data = await res.json();
+        output.textContent = 'Contributor Student ID: ' + data.contributorStudentId;
+      } catch (e) {
+        output.textContent = 'Could not load contributor: ' + e.message;
+      }
+    });
+  </script>
+</body>
+</html>
